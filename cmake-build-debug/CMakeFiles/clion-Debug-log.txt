@@ -1,10 +1,10 @@
-"C:\Program Files\JetBrains\CLion 2024.2.2\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2024.2.2/bin/ninja/win/x64/ninja.exe" -G Ninja -S C:\Users\antoi\CLionProjects\ProjetING3 -B C:\Users\antoi\CLionProjects\ProjetING3\cmake-build-debug
+"C:\Users\andre\CLion 2024.3.1.1\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "MinGW Makefiles" -S C:\Users\andre\CLionProjects\ProjetING3A -B C:\Users\andre\CLionProjects\ProjetING3A\cmake-build-debug
 -- The C compiler identification is GNU 6.3.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
 -- Check for working C compiler: C:/MinGW/bin/gcc.exe - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
--- Configuring done (2.5s)
+-- Configuring done (4.8s)
 -- Generating done (0.0s)
--- Build files have been written to: C:/Users/antoi/CLionProjects/ProjetING3/cmake-build-debug
+-- Build files have been written to: C:/Users/andre/CLionProjects/ProjetING3A/cmake-build-debug
