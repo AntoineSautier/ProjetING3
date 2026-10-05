@@ -211,6 +211,15 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //Value Computed by CMake
+ProjetAllegro_BINARY_DIR:STATIC=C:/Users/andre/CLionProjects/ProjetING3A/cmake-build-debug
+
+//Value Computed by CMake
+ProjetAllegro_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+ProjetAllegro_SOURCE_DIR:STATIC=C:/Users/andre/CLionProjects/ProjetING3A
+
+//Value Computed by CMake
 ProjetING3_BINARY_DIR:STATIC=C:/Users/andre/CLionProjects/ProjetING3A/cmake-build-debug
 
 //Value Computed by CMake
