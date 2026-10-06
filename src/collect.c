@@ -1,7 +1,3 @@
-//
-// Created by andre on 10/05/2025.
-//
-
 #include "collect.h"
 #include "stdio.h"
 #include "partie.h"

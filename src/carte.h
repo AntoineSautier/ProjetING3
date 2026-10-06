@@ -1,7 +1,3 @@
-//
-// Created by Tom Cailluyer on 09/04/2025.
-//
-
 #ifndef CARTE_H
 #define CARTE_H
 
