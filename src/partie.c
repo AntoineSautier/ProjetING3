@@ -17,7 +17,7 @@ static ALLEGRO_BITMAP *spritePerso = NULL;
 
 static ALLEGRO_BITMAP *ecranFin = NULL;
 int compteurFin = 0;
-#define NB_TILES 15
+#define NB_TILES 20
 int currentInventoryIndex = 0;
 const int totalInventorySlots = 4;
 
@@ -42,11 +42,11 @@ ALLEGRO_BITMAP *redimensionner(ALLEGRO_BITMAP *src, int w, int h) {
 void chargerTuiles(void) {
     const char* fichiers[] = {
         NULL,
-        "../imagejeux/desert1.PNG",
-        "../imagejeux/desert2.PNG",
-        "../imagejeux/eau.PNG",
-        "../imagejeux/cactus1.PNG",
-        "../imagejeux/cactus2.PNG",
+        "../imagejeux/lyon_trottoir.png",  // 1 : trottoir (avant : desert1.PNG)
+        "../imagejeux/lyon_route.png",     // 2 : route    (avant : desert2.PNG)
+        "../imagejeux/lyon_rhone.png",     // 3 : Rhone    (avant : eau.PNG)
+        "../imagejeux/lyon_arbre1.png",    // 4 : platane  (avant : cactus1.PNG)
+        "../imagejeux/lyon_arbre2.png",    // 5 : tilleul  (avant : cactus2.PNG)
         "../imagejeux/herbe1.PNG",
         "../imagejeux/cactusbleu.PNG",
         "../imagejeux/pngcactus.PNG",
@@ -56,6 +56,11 @@ void chargerTuiles(void) {
         "../imagejeux/lasso.png",
         "../imagejeux/revol.png",
         "../imagejeux/bois.png",
+        "../imagejeux/lyon_toit.png",      // 15 : immeuble, toit en tuiles (bloquant)
+        "../imagejeux/lyon_citroen.png",   // 16 : ancien garage Citroen / ECE (bloquant)
+        "../imagejeux/lyon_herbe.png",     // 17 : herbe, parcs et berges
+        "../imagejeux/lyon_ece.png",       // 18 : enseigne ECE (bloquant)
+        "../imagejeux/lyon_ardoise.png",   // 19 : immeuble, toit en ardoise (bloquant)
     };
 
     for (int i = 1; i < NB_TILES; i++) {
@@ -164,6 +169,7 @@ int chargerCarte(Carte *carte, const char *filename) {
     fclose(fp);
     return 1;
 }
+void mettreAJourCamera(Jeu *pJeu);
 void creerPartie(Jeu *const pJeu) {
     assert(pJeu->partie == NULL);
     pJeu->partie = calloc(1, sizeof(Partie));
@@ -183,8 +189,9 @@ void creerPartie(Jeu *const pJeu) {
     }
 
 
-    pJeu->partie->perso.x = 1;
-    pJeu->partie->perso.y = 1;
+    pJeu->partie->perso.x = SPAWN_X;
+    pJeu->partie->perso.y = SPAWN_Y;
+    mettreAJourCamera(pJeu); // centre la camera sur le point de depart
 }
 void mettreAJourCamera(Jeu *pJeu) {
 
@@ -228,7 +235,7 @@ void dessinerCarte(Jeu *const pJeu, Carte *carte) {
             }
 
 
-            if ((tile == 2 || tile == 3) && tiles[tile]) {
+            if ((tile == 2 || tile == 3 || (tile >= 15 && tile < NB_TILES)) && tiles[tile]) {
                 al_draw_bitmap(tiles[tile], screenX, screenY, 0);
             }
         }
@@ -523,7 +530,7 @@ void nouvellePartie(Jeu *const pJeu) {
 
 bool estTuileBlocante(int tuile) {
     // Liste des tuiles considérées comme bloquantes
-    return tuile==3|| tuile == 6 ||tuile==10||tuile==11;
+    return tuile==3|| tuile == 6 ||tuile==10||tuile==11|| tuile==15 || tuile==16 || tuile==18 || tuile==19;
 }
 
 void partieToucheEnfoncee(Jeu *const pJeu, const int keycode) {

@@ -17,7 +17,24 @@ add_executable(ProjetING3 main.c
 )
 
 IF(WIN32)
-    target_link_libraries(ProjetING3 -lmingw32 -lallegro-5.0.10-monolith-md-debug)
+    find_package(PkgConfig QUIET)
+    IF(PkgConfig_FOUND)
+        pkg_check_modules(ALLEGRO_MSYS2 IMPORTED_TARGET
+                allegro-5
+                allegro_font-5
+                allegro_ttf-5
+                allegro_image-5
+                allegro_primitives-5
+                allegro_audio-5
+                allegro_acodec-5)
+    ENDIF()
+
+    IF(ALLEGRO_MSYS2_FOUND)
+        target_link_libraries(ProjetING3 PkgConfig::ALLEGRO_MSYS2)
+    ELSE()
+        # Configuration d'origine du projet (inchangée)
+        target_link_libraries(ProjetING3 -lmingw32 -lallegro-5.0.10-monolith-md-debug)
+    ENDIF()
 ELSE()
     INCLUDE_DIRECTORIES(/usr/local/Cellar/allegro/5.2.6.0/include)
     LINK_DIRECTORIES(/usr/local/Cellar/allegro/5.2.6.0/lib)
